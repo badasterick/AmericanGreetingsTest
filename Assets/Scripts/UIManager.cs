@@ -6,17 +6,11 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    //public TMP_Dropdown dropDownMenu;
     public GameObject hexagon, circle, triangle;
     // Default is 0 because hexagon will be the starting shape.
     private int selectedShape = 0;
 
-    private void Start()
-    {
-        //List<string> shapes = new List<string>() { "Hexagon", "Circle", "Triangle" };
-        //dropDownMenu.AddOptions(shapes);
-    }
-
+    // Changes the visible shape based off of the selection of the dropdown menu.
     public void ChangeIndex(int index)
     {
        switch(index)
@@ -39,6 +33,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    // Sets the visiblilty of all of the shapes to false before enabling the selected shape.
     private void DeactivateShapes()
     {
         hexagon.SetActive(false);

@@ -10,11 +10,12 @@ public class Shape : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Spawn a random shape at start.
         shapeToSpawn = Random.Range(0, 3);
-        //print(shapeToSpawn);
         ChangeIndex(shapeToSpawn);
     }
 
+    // Sets the selected shape to be visible and plays the spawning animation for that shape.
     public void ChangeIndex(int index)
     {
         switch (index)
@@ -37,6 +38,7 @@ public class Shape : MonoBehaviour
         }
     }
 
+    // Deactivates the other shapes. This is here to make sure multiple shapes don't show up during the game.
     private void DeactivateShapes()
     {
         hex.SetActive(false);

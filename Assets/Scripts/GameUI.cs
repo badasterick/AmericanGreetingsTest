@@ -10,11 +10,11 @@ public class GameUI : MonoBehaviour
     public TextMeshProUGUI highScore;
     private bool startTimer = false;
     private float timeLeft = 60;
-    private bool isGameOver = false;
 
 
     private void Start()
     {
+        // Makes sure the game over screen is hidden and saves the default high score of 0.
         gameOver.SetActive(false);
         highScore.text = PlayerPrefs.GetInt("HighScore", 0).ToString();
     }
@@ -22,17 +22,14 @@ public class GameUI : MonoBehaviour
     void Update()
     {
         
-
-        /*if(Input.GetMouseButtonDown(0) && isGameOver)
-        {
-            RestartGame();
-        } else*/
+        // Tracks the player tapping the screen or mouse input to start the game (timer).
         if (Input.GetMouseButtonDown(0))
         {
             intro.SetActive(false);
             startTimer = true;
         }
 
+        // Counts down and updates the timer UI.
         if (startTimer && timeLeft > 0)
         {
             timeLeft -= Time.deltaTime;
@@ -40,28 +37,22 @@ public class GameUI : MonoBehaviour
         }
         else if (startTimer && timeLeft < 0)
         {
+            // When the timer runs out, end the game.
             GameOver();
         }
 
-        // Resets High Score
+        // Resets High Score 
         if(Input.GetKeyDown(KeyCode.R))
         {
             PlayerPrefs.DeleteKey("HighScore");
         }
     }
 
-    /*private void RestartGame()
-    {
-        gameOver.SetActive(false);
-        intro.SetActive(true);
-        timeLeft = 60;
-        score.GetComponent<TextMeshProUGUI>().text = "0";
-    }*/
-
+    // Reveals the game over UI and checks if the user score is greater than the high score. If it is, save the new high score.
+    // Destroys any remaining objects in the game.
     private void GameOver()
     {
         gameOver.SetActive(true);
-        //isGameOver = true;
         startTimer = false;
         finalScore.GetComponent<TextMeshProUGUI>().text = score.GetComponent<TextMeshProUGUI>().text;
 

@@ -3,7 +3,7 @@ Dear American Greetings,
 Thank you for taking the time to review my test submission. 
 
 The project is located on github: https://github.com/badasterick/AmericanGreetingsTest.git
-Just in case, I have also uploaded the project to google drive here: 
+Just in case, I have also uploaded the project to google drive here: https://drive.google.com/file/d/1UgMHIHVyKxsc3ljidWf8jBDlMKFdoKag/view?usp=sharing
 
 ------------------------
 Builds and Executables:

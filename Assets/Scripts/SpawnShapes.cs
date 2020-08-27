@@ -8,11 +8,12 @@ public class SpawnShapes : MonoBehaviour
     public GameObject newShape = null;
     public GameObject topLeft, topRight, bottomLeft, bottomRight;
     private float minX, maxX, minY, maxY;
+    private AudioSource sfx;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        sfx = GameObject.FindGameObjectWithTag("Sound").GetComponent<AudioSource>();
         minX = bottomLeft.transform.position.x;
         maxX = topRight.transform.position.x;
         minY = bottomLeft.transform.position.y;
@@ -24,9 +25,10 @@ public class SpawnShapes : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && canClick)
         {
+            sfx.Play(0);
             Instantiate(newShape, new Vector3(Random.Range(minX, maxX), Random.Range(minY, maxY), 0), Quaternion.identity);
-            canClick = false;
-            OnMouseExit();
+            //canClick = false;
+            //OnMouseExit();
             Destroy(transform.parent.gameObject);
 
         }
@@ -35,12 +37,12 @@ public class SpawnShapes : MonoBehaviour
     private void OnMouseEnter()
     {
         canClick = true;
-        print("entered");
+        //print("entered");
     }
 
     private void OnMouseExit()
     {
         canClick = false;
-        print("exit");
+        //print("exit");
     }
 }

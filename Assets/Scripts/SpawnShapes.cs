@@ -1,23 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class SpawnShapes : MonoBehaviour
 {
     private bool canClick = false;
     public GameObject newShape = null;
-    public GameObject topLeft, topRight, bottomLeft, bottomRight;
-    private float minX, maxX, minY, maxY;
     private AudioSource sfx;
+    public GameObject score;
+    private int scoreValue;
 
     // Start is called before the first frame update
     void Start()
     {
+        scoreValue = int.Parse(score.GetComponent<TextMeshProUGUI>().text);
         sfx = GameObject.FindGameObjectWithTag("Sound").GetComponent<AudioSource>();
-        minX = bottomLeft.transform.position.x;
-        maxX = topRight.transform.position.x;
-        minY = bottomLeft.transform.position.y;
-        maxY = topRight.transform.position.y;
     }
 
     // Update is called once per frame
@@ -26,9 +24,12 @@ public class SpawnShapes : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && canClick)
         {
             sfx.Play(0);
-            Instantiate(newShape, new Vector3(Random.Range(minX, maxX), Random.Range(minY, maxY), 0), Quaternion.identity);
-            //canClick = false;
-            //OnMouseExit();
+            scoreValue += 10;
+            score.GetComponent<TextMeshProUGUI>().text = "" + scoreValue;
+
+
+            Instantiate(newShape, new Vector3(Random.Range(-5, 8), Random.Range(-3, 4.5f), 0), Quaternion.identity);
+
             Destroy(transform.parent.gameObject);
 
         }
@@ -37,12 +38,10 @@ public class SpawnShapes : MonoBehaviour
     private void OnMouseEnter()
     {
         canClick = true;
-        //print("entered");
     }
 
     private void OnMouseExit()
     {
         canClick = false;
-        //print("exit");
     }
 }

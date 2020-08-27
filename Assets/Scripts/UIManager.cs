@@ -6,10 +6,10 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public TMP_Dropdown dropDownMenu;
+    //public TMP_Dropdown dropDownMenu;
     public GameObject hexagon, circle, triangle;
     // Default is 0 because hexagon will be the starting shape.
-    public int selectedShape = 0;
+    private int selectedShape = 0;
 
     private void Start()
     {

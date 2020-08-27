@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ChangeColor : MonoBehaviour
 {
-    private Vector2 mousePos;
     private bool canClick = false;
     private bool firstClick = false;
     private float doubleClickTimer;
@@ -18,10 +17,9 @@ public class ChangeColor : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        mousePos = Input.mousePosition;  
+    { 
         
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(0)) // || Input.touchCount == 1)
         {
             if(!firstClick)
             {

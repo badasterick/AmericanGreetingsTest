@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnShapes : MonoBehaviour
 {
-    public bool canClick = false;
+    private bool canClick = false;
     public GameObject newShape = null;
     public GameObject topLeft, topRight, bottomLeft, bottomRight;
     private float minX, maxX, minY, maxY;
@@ -25,17 +25,22 @@ public class SpawnShapes : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && canClick)
         {
             Instantiate(newShape, new Vector3(Random.Range(minX, maxX), Random.Range(minY, maxY), 0), Quaternion.identity);
+            canClick = false;
+            OnMouseExit();
             Destroy(transform.parent.gameObject);
+
         }
     }
 
     private void OnMouseEnter()
     {
         canClick = true;
+        print("entered");
     }
 
     private void OnMouseExit()
     {
         canClick = false;
+        print("exit");
     }
 }

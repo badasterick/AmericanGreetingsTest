@@ -20,15 +20,6 @@ public class GameUI : MonoBehaviour
     void Update()
     {
         
-        if(startTimer && timeLeft > 0)
-        {
-            timeLeft -= Time.deltaTime;
-            timer.GetComponent<TextMeshProUGUI>().text = "" + (int)timeLeft;
-        }
-        else if(startTimer && timeLeft < 0)
-        {
-            GameOver();
-        }
 
         if(Input.GetMouseButtonDown(0) && isGameOver)
         {
@@ -38,6 +29,16 @@ public class GameUI : MonoBehaviour
         {
             intro.SetActive(false);
             startTimer = true;
+        }
+
+        if (startTimer && timeLeft > 0)
+        {
+            timeLeft -= Time.deltaTime;
+            timer.GetComponent<TextMeshProUGUI>().text = "" + (int)timeLeft;
+        }
+        else if (startTimer && timeLeft < 0)
+        {
+            GameOver();
         }
     }
 
